@@ -13,6 +13,10 @@
   },
   "author": "Rémi Fruteau de Laclos <remi.fruteau@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/djedje72/json-to-es2015"
+  },
   "dependencies": {
     "chalk": "4.1.2",
     "commander": "12.0.0",
