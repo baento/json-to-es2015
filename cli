@@ -1,15 +1,20 @@
 #!/usr/bin/env node
-const program = require("commander");
-const packageJson = require("./package.json");
+const { program } = require("commander");
+const { version } = require("./package.json");
 const path = require("path");
 const generateClasses = require("./dist/index");
 
 program
-    .version(packageJson.version)
-    .arguments("[jsonPath]")
-    .option("-d, --default [defaultValue]", "Override default undefined value")
-    .option("--private [privateSuffix]", "Override default undefined value")
-    .action((jsonPath, options) => {
-        generateClasses(path.resolve(jsonPath), options);
-    })
-    .parse(process.argv);
+  .name("json-to-es2015")
+  .description("Generate ES2015 classes from JSON Swagger schema")
+  .version(version);
+
+program
+  .arguments("[jsonPath]")
+  .option("-d, --default [defaultValue]", "Override default undefined value")
+  .option("--private [privateSuffix]", "Override default undefined value")
+  .action((jsonPath, options) => {
+    generateClasses(path.resolve(jsonPath), options);
+  });
+
+program.parse();
